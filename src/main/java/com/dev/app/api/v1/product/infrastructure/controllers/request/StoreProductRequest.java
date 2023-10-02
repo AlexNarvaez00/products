@@ -17,14 +17,16 @@ public class StoreProductRequest {
 
   private String code; // :String[20]
   private String description; // :String[60]
-  private Category category; // Categoria
+  private Long category_id; // Categoria
   private boolean active; // boolean
 
   public Product asProduct() {
+    var cat = new Category();
+    cat.setId(this.category_id);
     return Product.builder()
         .code(this.code)
         .description(this.description)
-        .category(this.category)
+        .category(cat)
         .active(this.active)
         .build();
   }

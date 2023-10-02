@@ -5,8 +5,10 @@ import java.util.List;
 import com.dev.app.api.v1.barCode.domain.BarCode;
 import com.dev.app.api.v1.category.domain.Category;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -40,10 +42,10 @@ public class Product {
   @Column(length = 60)
   private String description; // :String[60]
 
-  @OneToOne
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private Category category; //Categoria
 
-  @OneToMany( mappedBy = "product" )
+  @OneToMany( mappedBy = "product", fetch = FetchType.LAZY,cascade = CascadeType.ALL )
   private List<BarCode> BarsCode; // CodigoBarra[]
 
   private boolean active; //boolean
