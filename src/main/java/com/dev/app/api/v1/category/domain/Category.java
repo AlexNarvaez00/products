@@ -30,11 +30,14 @@ public class Category {
   private String code; // :String[10]
 
   @Column(length = 40)
-  private String description; //:String[40]
+  private String description; // :String[40]
 
-  private boolean activo = true; //:boolean
+  private boolean active = true; // :boolean
 
-  public Category(Long id){
+  /**
+   * @param Long id
+   */
+  public Category(Long id) {
     this.id = id;
   }
 

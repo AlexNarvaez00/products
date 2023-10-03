@@ -13,7 +13,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -38,17 +37,25 @@ public class Product {
   private Long id;
 
   @Column(length = 20)
-  private String code; // :String[20]
+  private String code;
 
   @Column(length = 60)
-  private String description; // :String[60]
+  private String description;
 
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
   @JsonIgnore
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-  private Category category; //Categoria
+  private Category category;
 
-  @OneToMany( mappedBy = "product", fetch = FetchType.LAZY,cascade = CascadeType.ALL )
-  private List<BarCode> BarsCode; // CodigoBarra[]
+  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+  @JsonIgnore
+  private List<BarCode> BarsCode;
 
-  private boolean active; //boolean
+  private boolean active = true;
+
+  /**
+   * @param Long id
+   */
+  public Product(Long id) {
+    this.id = id;
+  }
 }

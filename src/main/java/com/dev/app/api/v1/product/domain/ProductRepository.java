@@ -17,4 +17,6 @@ public interface ProductRepository {
 
   public Page<Product> findByCodeOrDescriptionLike(Pageable page, String code, String description);
 
+  public void deleteById(Long id);
+
 }

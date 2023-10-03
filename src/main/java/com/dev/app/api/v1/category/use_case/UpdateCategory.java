@@ -20,4 +20,8 @@ public class UpdateCategory {
 
   private CategoryRepository repo;
 
+  public Category update(Category cat){
+    return this.repo.save(cat);
+  }
+
 }

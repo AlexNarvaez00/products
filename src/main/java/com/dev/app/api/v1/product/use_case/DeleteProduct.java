@@ -15,4 +15,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class DeleteProduct {
   private ProductRepository repo;
+  
+  public void destroy(Long id){
+    this.repo.deleteById(id);
+  }
+
 }

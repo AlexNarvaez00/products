@@ -19,4 +19,5 @@ public interface CategoryRepository {
       String code,
       String description);
 
+  public void deleteById(Long id);
 }

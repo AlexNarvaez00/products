@@ -10,29 +10,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * StoreCategoryRequest
+ * UpdateCategoryRequest
  */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StoreCategoryRequest {
+public class UpdateCategoryRequest {
 
   @NotBlank
   @NotNull
   @Size(min = 0, max = 10)
   private String code; // :String[10]
-  
+
   @NotBlank
   @NotNull
   @Size(min = 0, max = 40)
   private String description; // :String[40]
-  
+
   @NotNull
   private boolean active = true; // :boolean
 
-  public Category asCategory() {
+  public Category asCategory(Long id) {
     return Category
         .builder()
+        .id(id)
         .code(this.code)
         .description(this.description)
         .active(this.active)

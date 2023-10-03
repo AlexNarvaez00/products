@@ -17,12 +17,17 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class FindCategoryByCodeOrCategory {
- private CategoryRepository repo; 
+  private CategoryRepository repo;
 
-
+  /**
+   * 
+   * @param pageable
+   * @param code
+   * @param description
+   * @return Page<Category>
+   */
   public Page<Category> andGet(Pageable pageable, String code, String description) {
     return this.repo.findByCodeLikeOrDescriptionLike(pageable, code, description);
   }
-
 
 }

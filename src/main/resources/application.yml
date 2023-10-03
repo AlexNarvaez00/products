@@ -14,7 +14,7 @@ spring:
   devtools:     
     restart: 
       poll-interval: 4s       
-    quiet-period: 3s  
+      quiet-period: 3s  
   #data:
   # rest:  
   #   base-path: /api

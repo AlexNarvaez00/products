@@ -3,7 +3,6 @@ package com.dev.app.api.v1.product.infrastructure.controllers.request;
 import com.dev.app.api.v1.category.domain.Category;
 import com.dev.app.api.v1.product.domain.Product;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -12,12 +11,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * SotreProductRequest
+ * UpdateProductRequest
  */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StoreProductRequest {
+public class UpdateProductRequest {
 
   @NotNull
   @NotEmpty
@@ -32,14 +31,15 @@ public class StoreProductRequest {
   private Category category; // Categoria
 
   @NotNull
-  private boolean active = true; // boolean
+  private boolean active; // boolean
 
   /**
    * 
    * @return Product
    */
-  public Product asProduct() {
+  public Product asProduct(Long id) {
     return Product.builder()
+        .id(id)
         .code(this.code)
         .description(this.description)
         .category(this.category)

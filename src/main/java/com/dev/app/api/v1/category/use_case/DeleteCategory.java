@@ -15,6 +15,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class DeleteCategory {
 
- private CategoryRepository repo; 
-  
+  private CategoryRepository repo;
+
+  public void destroy(Long id) {
+    this.repo.deleteById(id);
+  }
+
 }
