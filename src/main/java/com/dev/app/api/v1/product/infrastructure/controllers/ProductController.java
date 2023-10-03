@@ -39,7 +39,7 @@ public class ProductController {
       @RequestParam(required = false, defaultValue = "") String description) {
     Pageable pageable = PageRequest.of(page, 10);
     return this.findCodeAndDescription
-        .andGet(pageable, code, description);
+        .andGet(pageable, "%" + code + "%", "%"+ description + "%");
   }
 
   @PostMapping

@@ -15,6 +15,6 @@ public interface ProductRepository {
   public Product save(Product product);
 
 
-  public Page<Product> findByCodeAndDescriptionLike(Pageable page, String code, String description);
+  public Page<Product> findByCodeOrDescriptionLike(Pageable page, String code, String description);
 
 }

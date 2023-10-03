@@ -33,4 +33,9 @@ public class Category {
   private String description; //:String[40]
 
   private boolean activo = true; //:boolean
+
+  public Category(Long id){
+    this.id = id;
+  }
+
 }

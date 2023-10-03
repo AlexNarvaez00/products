@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dev.app.api.v1.barCode.domain.BarCode;
 import com.dev.app.api.v1.category.domain.Category;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -42,7 +43,8 @@ public class Product {
   @Column(length = 60)
   private String description; // :String[60]
 
-  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+  @JsonIgnore
+  @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
   private Category category; //Categoria
 
   @OneToMany( mappedBy = "product", fetch = FetchType.LAZY,cascade = CascadeType.ALL )

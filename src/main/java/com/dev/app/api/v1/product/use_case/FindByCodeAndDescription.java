@@ -21,7 +21,7 @@ public class FindByCodeAndDescription {
   private ProductRepository repo;
 
   public Page<Product> andGet(Pageable pageable, String code, String description) {
-    return this.repo.findByCodeAndDescriptionLike(pageable, code, description);
+    return this.repo.findByCodeOrDescriptionLike(pageable, code, description);
   }
 
 }
